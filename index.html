@@ -5,43 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hashem Almhimed | Machine Learning Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; color: #222; background-color: #f9fafb; }
-    header { background-color: #111827; color: white; padding: 2.5rem 1rem; text-align: center; }
-    h1 { margin-bottom: 0.4rem; font-size: 2rem; }
-    h2 { color: #111827; border-bottom: 2px solid #e5e7eb; padding-bottom: 0.4rem; }
-    section { max-width: 900px; margin: 2rem auto; padding: 1.5rem; background: white; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-    ul { padding-left: 1.2rem; }
-    a { color: #2563eb; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #1f2937;
+      background: linear-gradient(120deg, #eef2ff 0%, #f9fafb 100%);
+    }
+    header {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 3rem 1rem 2rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    header img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid #93c5fd;
+    }
+    h1 { margin: 0; font-size: 2rem; }
+    h2 { color: #1e3a8a; border-bottom: 2px solid #bfdbfe; padding-bottom: 0.4rem; margin-top: 2rem; }
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.5rem 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    section:hover { transform: translateY(-4px); }
+    a { color: #2563eb; text-decoration: none; transition: color 0.3s ease; }
+    a:hover { color: #1d4ed8; text-decoration: underline; }
+    ul { padding-left: 1.2rem; line-height: 1.6; }
     .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
-    footer { text-align:center; padding:1.5rem; color:#6b7280; font-size:0.9rem; }
+    details summary { cursor: pointer; color: #1e3a8a; font-weight: 600; }
+    details p { margin: 0.5rem 0 0 1rem; }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
   <header>
+    <img src="profile-placeholder.jpg" alt="Profile photo">
     <h1>Hashem Almhimed</h1>
     <p>Machine Learning Engineer | Bamberg, Germany</p>
-    <p><a href="mailto:hashem.almhimed@gmail.com" style="color:#93c5fd;">hashem.almhimed@gmail.com</a> |
-       <a href="https://www.linkedin.com/in/hashem-almhimed-2233a0118" style="color:#93c5fd;">LinkedIn</a></p>
+    <p>
+      <i class="fa-solid fa-envelope"></i> 
+      <a href="mailto:hashem.almhimed@gmail.com" style="color:#bfdbfe;">hashem.almhimed@gmail.com</a> |
+      <i class="fa-brands fa-linkedin"></i> 
+      <a href="https://www.linkedin.com/in/hashem-almhimed-2233a0118" style="color:#bfdbfe;">LinkedIn</a>
+    </p>
   </header>
 
   <section>
-    <h2>About Me</h2>
+    <h2><i class="fa-solid fa-user"></i> About Me</h2>
     <p>I am a passionate Machine Learning Engineer with a Master's degree in Computer Science and over four years of international experience in software development, data analysis, and deep learning. My work bridges research and application—from building image classification and NLP models to developing mobile and web applications. Currently, I am expanding my expertise through the BEGA Regio program in Germany, focusing on AI-driven innovation and digital transformation.</p>
   </section>
 
   <section>
-    <h2>Education</h2>
+    <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
     <ul>
-      <li><strong>Universität Bayreuth & Hochschule Hof (Germany)</strong> — Weiterbildung in IT und digitale Industrie (BEGA REGIO), Jan 2025 – Oct 2025</li>
+      <li><strong>Universität Bayreuth & Hochschule Hof (Germany)</strong> — Weiterbildung in IT und digitale Industrie (BEGA REGIO), Jan 2025 – Present</li>
       <li><strong>National Institute of Technology Karnataka (India)</strong> — M.Sc. in Computer Science and Engineering, Jul 2018 – Nov 2020</li>
       <li><strong>University of Damascus (Syria)</strong> — B.Sc. in Information Technology Engineering, Oct 2009 – Jun 2015</li>
     </ul>
   </section>
 
   <section>
-    <h2>Professional Experience</h2>
+    <h2><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
     <ul>
       <li><strong>NTT Smart Connect</strong> — Software Engineer, Osaka, Japan (Oct 2022 – Aug 2023)<br>Developed and maintained iOS applications using Swift, XCode, WebRTC, AWS, and Git.</li>
       <li><strong>Woven Alpha</strong> — GIS & Machine Learning Engineer, Tokyo, Japan (Jun 2022 – Oct 2022)<br>Developed ML-based mapping tools and automated geospatial workflows.</li>
@@ -50,27 +92,34 @@
   </section>
 
   <section>
-    <h2>Academic Projects</h2>
-    <ul>
-      <li><strong>Diabetic Retinopathy Detection</strong> — CNN-based image classification using EfficientNet & DenseNet.</li>
-      <li><strong>Gender Prediction for Online Shoppers</strong> — Deep Learning model using browsing session embeddings.</li>
-      <li><strong>Facebook Likes Classification</strong> — ML algorithms (SVM, Logistic Regression) for content categorization.</li>
-    </ul>
+    <h2><i class="fa-solid fa-diagram-project"></i> Selected Projects</h2>
+    <details open>
+      <summary>Diabetic Retinopathy Detection</summary>
+      <p>Built CNN-based image classification model using EfficientNet & DenseNet to classify medical images into severity levels, improving preprocessing for higher accuracy.</p>
+    </details>
+    <details>
+      <summary>Gender Prediction for Online Shoppers</summary>
+      <p>Developed Deep Learning model to predict user gender based on browsing sessions using embedding features and behavioral data.</p>
+    </details>
+    <details>
+      <summary>Facebook Likes Classification</summary>
+      <p>Implemented SVM and Logistic Regression models to categorize user interests into domains such as sports, technology, and politics.</p>
+    </details>
   </section>
 
   <section>
-    <h2>Skills</h2>
+    <h2><i class="fa-solid fa-gears"></i> Skills</h2>
     <div class="skills">
       <div><strong>Programming:</strong> Python, Java (Spring Boot, Spring Cloud), C++, Swift, SQL</div>
-      <div><strong>Machine Learning & AI:</strong> Deep Learning, NLP, LLMs, RAG, LangChain, LangGraph, Agentic AI, scikit-learn, pandas, numpy, Keras, TensorFlow, PyTorch</div>
-      <div><strong>Cloud & DevOps:</strong> AWS, GCP, Docker, Kubernetes</div>
-      <div><strong>Web/Mobile:</strong> Flutter, Android, Swift, REST APIs, WebRTC, FastAPI, </div>
-      <div><strong>Data & Tools:</strong> Git, MySQL, SQL, Hibernate, Jira, XCode</div>
+      <div><strong>Machine Learning & AI:</strong> Deep Learning, NLP, LLMs, RAG, TensorFlow, PyTorch</div>
+      <div><strong>Cloud & DevOps:</strong> AWS, GCP, Docker</div>
+      <div><strong>Web/Mobile:</strong> Flutter, Android, REST APIs, WebRTC</div>
+      <div><strong>Data & Tools:</strong> Git, MySQL, Hibernate, Jira, XCode</div>
     </div>
   </section>
 
   <section>
-    <h2>Languages</h2>
+    <h2><i class="fa-solid fa-language"></i> Languages</h2>
     <ul>
       <li>Arabic — Native</li>
       <li>English — C1</li>
