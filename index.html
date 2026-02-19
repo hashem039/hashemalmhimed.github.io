@@ -286,6 +286,73 @@
   margin-bottom: 0.4rem;
   list-style: disc;
 }
+.certificates-section {
+  margin-top: 40px;
+}
+
+/* updated certificate styles to match skill-grid colors */
+.certificate-card {
+  background: linear-gradient(135deg, #f0f4ff, #ffffff);
+  color: var(--text);
+  padding: 1.2rem 1.4rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.certificate-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(30,58,138,0.15);
+}
+
+.certificate-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.certificate-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e3a8a; /* same as skill-card h3 */
+}
+
+.cert-btn {
+  background: #38bdf8;
+  color: #0f172a;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cert-btn:hover {
+  background: #0ea5e9;
+  transform: scale(1.05);
+}
+
+.cert-skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cert-skills li {
+  background: #e0e7ff; /* align with skill-badge colors */
+  color: #1e3a8a;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  border: 1px solid #c7d2fe;
+}
 
   </style>
 </head>
@@ -355,6 +422,118 @@
   </ul>
 </section>
 
+<section class="certificates-section">
+  <h2><i class="fa-solid fa-certificate"></i> Certificates</h2>
+
+  <div class="certificate-card">
+    <div class="certificate-header">
+      <h3>PyTorch: Techniques and Ecosystem Tools</h3>
+      <a href="https://learn.deeplearning.ai/certificates/c07b75d4-a5d3-49e8-8390-d5bbb3b8b0e9" 
+         target="_blank" class="cert-btn">
+        <i class="fa-solid fa-up-right-from-square"></i> View Certificate
+      </a>
+    </div>
+
+    <ul class="cert-skills">
+      <li>Hyperparameter-Optimierung (Optuna)</li>
+      <li>TorchVision & Data-Augmentation</li>
+      <li>Effiziente Daten-Pipelines</li>
+      <li>Natural Language Processing (NLP)</li>
+      <li>Hugging Face-Produkte & BERT</li>
+      <li>Tokenisierung & Wort-Embeddings</li>
+      <li>Tensoring & effiziente Training-Pipelines</li>
+      <li>Fine-Tuning von Large Language Models (LLMs)</li>
+    </ul>
+  </div>
+
+ <div class="certificate-card">
+    <div class="certificate-header">
+      <h3>Orchestrating Workflows for GenAI Applications</h3>
+      <a href="https://learn.deeplearning.ai/accomplishments/a20f2e98-2589-42bd-858f-cd0d9b3400c0?usp=sharing" 
+         target="_blank" class="cert-btn">
+        <i class="fa-solid fa-up-right-from-square"></i> View Certificate
+      </a>
+    </div>
+
+    <ul class="cert-skills">
+      <li>Data Engineering & Processing</li>
+      <li>Embeddings & RAG</li>
+      <li>Even-Driven AI & GenAI Applications</li>
+      <li>LLMOPs</li>
+      <li>Vector Databases</li>
+    </ul>
+  </div>
+
+<div class="certificate-card">
+    <div class="certificate-header">
+      <h3>LangChain for LLM Application Development</h3>
+      <a href="https://learn.deeplearning.ai/accomplishments/6f1c1dde-7e65-4f90-9fa1-31230db5edcb?usp=sharing" 
+         target="_blank" class="cert-btn">
+        <i class="fa-solid fa-up-right-from-square"></i> View Certificate
+      </a>
+    </div>
+
+    <ul class="cert-skills">
+      <li>AI Frameworks</li>
+      <li>LangChain & LangGraph</li>
+      <li>Agents & Chatbots</li>
+      <li>Generative Models</li>
+      <li>RAG, Embeddings and Prompt Engineering</li>
+    </ul>
+  </div>
+
+  <div class="certificate-card">
+    <div class="certificate-header">
+      <h3>Building Code Agents with Hugging Face smolagents</h3>
+      <a href="https://learn.deeplearning.ai/accomplishments/528865ad-c2e6-4fce-9538-1dd0a98257b1" 
+         target="_blank" class="cert-btn">
+        <i class="fa-solid fa-up-right-from-square"></i> View Certificate
+      </a>
+    </div>
+
+    <ul class="cert-skills">
+      <li>AI Safty</li>
+      <li>Evaluation and Monitoring of Agents</li>
+      <li>GenAI Applications</li>
+      <li>Prompt Engineering</li>
+      <li>Task Automation</li>
+    </ul>
+  </div>
+
+  <div class="certificate-card">
+    <div class="certificate-header">
+      <h3>Building Live Voice Agents with Google’s ADK</h3>
+      <a href="https://learn.deeplearning.ai/accomplishments/3e7dc74e-9e59-49eb-bdc2-cc3ac82e6a85" 
+         target="_blank" class="cert-btn">
+        <i class="fa-solid fa-up-right-from-square"></i> View Certificate
+      </a>
+    </div>
+
+    <ul class="cert-skills">
+      <li>Google Agent Development Kit (ADK)</li>
+      <li>Gemini API</li>
+      <li>Python</li>
+    </ul>
+  </div>
+
+  <div class="certificate-card">
+    <div class="certificate-header">
+      <h3>Finetuning Large Language Models</h3>
+      <a href="https://learn.deeplearning.ai/accomplishments/bd1efdba-c4ec-47a7-9d79-f3f677c4e2b5?usp=sharing" 
+         target="_blank" class="cert-btn">
+        <i class="fa-solid fa-up-right-from-square"></i> View Certificate
+      </a>
+    </div>
+
+    <ul class="cert-skills">
+      <li>Hugging Face Libraries</li>
+      <li>LLMs & Transformers</li>
+      <li>LoRA, QLoRA and Parameter-Efficient Fine-tuning</li>
+    </ul>
+  </div>
+
+
+</section>
 
 <section>
   <h2><i class="fa-solid fa-briefcase"></i> Experience</h2>
