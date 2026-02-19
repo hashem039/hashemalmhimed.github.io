@@ -70,7 +70,9 @@
 
   <section>
     <h2><i class="fa-solid fa-user"></i> About Me</h2>
-    <p>I am a passionate Machine Learning Engineer with a Master's degree in Computer Science and over four years of international experience in software development, data analysis, and deep learning. My work bridges research and application—from building image classification and NLP models to developing mobile and web applications. Currently, I am expanding my expertise through the BEGA Regio program in Germany, focusing on AI-driven innovation and digital transformation.</p>
+    <p>I am a passionate Machine Learning Engineer and AI enthusiast with a Master’s degree in Computer Science and over four years of international experience in software development, data analysis, and deep learning. 
+      I specialize in integrating cutting-edge AI, Machine Learning, and Generative AI solutions—including LLMs, RAG systems, and agentic AI architectures—into real-world workflows to drive digital transformation and deliver measurable business value. 
+      Having successfully completed the BEGA Regio program in Germany, I am now open and enthusiastic about taking on new and challenging opportunities in the field of AI and Machine Learning.</p>
   </section>
 
   <section>
@@ -94,6 +96,35 @@
   <section>
     <h2><i class="fa-solid fa-diagram-project"></i> Selected Projects</h2>
     <details open>
+      <summary>Chatbot Agent Systems based on Local LLMs and remote APIs</summary>
+      <p> A simple, powerful chat agent that runs local language models using Ollama. No API keys needed, works offline, and keeps your data private.
+🤖 Local LLM Inference - Run models like Mistral, Llama 2, Neural Chat locally
+💬 Interactive CLI - Easy-to-use command-line chat interface
+🚀 REST API - FastAPI server for programmatic access
+📝 Conversation Memory - Keeps conversation history for context
+🔧 Configurable - Easy setup with environment variables
+🔐 Privacy-First - All processing happens locally</p>
+    </details>
+    <details>
+      <summary>Recomendtion Agent based on Gemini APIs and Chain-Of-Thoughts</summary>
+      <p>small Streamlit app that demonstrates an agentic, chain-of-thought (CoT) pattern with structured outputs and a mock "tool" for fetching movie metadata. 
+        The app uses the OpenAI-compatible client for Google Gemini (via the compatibility OpenAI-style endpoint) to show how an LLM can plan, call tools, observe results, and synthesize a final recommendation.
+🤖 Using Gemini APIs to interact with LLMs
+💬 Chat interface to interact with Agent
+📝 Conversation Memory - Keeps conversation history for context
+🔧 Configurable - Easy setup with environment variables
+🤖 Uses a strict Chain-of-Thought (CoT) process enforced by a Pydantic schema so the assistant returns structured steps (START, PLAN, TOOL, OBSERVE, OUTPUT).</p>
+    </details>
+<details>
+      <summary>RAG based chatbots to interact with the company private files</summary>
+      <p>This project is an Internal Knowledge Chatbot designed to facilitate easy access to company information and resources. It leverages advanced natural language processing techniques to provide users with accurate and relevant answers to their queries.
+🤖 Using LLamaIndex framework building applications with LLMs
+💬 UI to upload documents and store its embedding in a vector-database
+📝 Conversation Memory - Keeps conversation history for context
+🔧 Chat interface to interact with Agent
+</p>
+    </details>
+    <details>
       <summary>Diabetic Retinopathy Detection</summary>
       <p>Built CNN-based image classification model using EfficientNet & DenseNet to classify medical images into severity levels, improving preprocessing for higher accuracy.</p>
     </details>
