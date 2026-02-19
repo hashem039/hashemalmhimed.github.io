@@ -4,163 +4,588 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hashem Almhimed | Machine Learning Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
+    :root {
+      --primary: #2563eb;
+      --secondary: #1e3a8a;
+      --accent: #38bdf8;
+      --bg: #f8fafc;
+      --card: rgba(255, 255, 255, 0.85);
+      --text: #1f2937;
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      color: #1f2937;
-      background: linear-gradient(120deg, #eef2ff 0%, #f9fafb 100%);
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
+
+    body {
+      background: linear-gradient(135deg, #eef2ff, #f8fafc);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* HERO */
     header {
-      background-color: #1e3a8a;
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
       color: white;
-      padding: 3rem 1rem 2rem;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 3rem 1rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    header img {
-      width: 140px;
-      height: 140px;
+
+    header::after {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 60%);
+      animation: rotateBg 20s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes rotateBg {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .header-inner {
+      width: 100%;
+      max-width: 1000px;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      z-index: 2;
+      position: relative;
+      padding: 0 1rem;
+    }
+
+    .header-left { flex: 0 0 auto; }
+    .header-right { flex: 1 1 auto; text-align: left; }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-      border: 4px solid #93c5fd;
+      border: 2px solid #93c5fd;
+      object-fit: cocver;
+      z-index: 2;
+      position: relative;
+      display: block;
     }
-    h1 { margin: 0; font-size: 2rem; }
-    h2 { color: #1e3a8a; border-bottom: 2px solid #bfdbfe; padding-bottom: 0.4rem; margin-top: 2rem; }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      margin-top: 0;
+      z-index: 2;
+      position: relative;
+    }
+
+    header p {
+      opacity: 0.9;
+      z-index: 2;
+      position: relative;
+    }
+
+    .social a {
+      color: #bfdbfe;
+      margin: 0 10px;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+
+    .social a:hover {
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive: stack on small screens */
+    @media (max-width: 700px) {
+      .header-inner { flex-direction: column; text-align: center; gap: 1rem; }
+      .header-right { text-align: center; }
+      .profile-img { width: 180px; height: 180px; }
+      header h1 { font-size: 1.6rem; }
+    }
+
+    /* SECTIONS */
     section {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 2rem auto;
-      padding: 1.5rem 2rem;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      padding: 2rem;
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    section:hover { transform: translateY(-4px); }
-    a { color: #2563eb; text-decoration: none; transition: color 0.3s ease; }
-    a:hover { color: #1d4ed8; text-decoration: underline; }
-    ul { padding-left: 1.2rem; line-height: 1.6; }
-    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
-    details summary { cursor: pointer; color: #1e3a8a; font-weight: 600; }
-    details p { margin: 0.5rem 0 0 1rem; }
+
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.12);
+    }
+
+    h2 {
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--primary);
+      padding-left: 0.6rem;
+      font-size: 1.5rem;
+    }
+
+    /* TIMELINE */
+    .timeline li {
+      margin-bottom: 1.2rem;
+      padding-left: 1rem;
+      border-left: 3px solid var(--primary);
+    }
+
+    .timeline strong {
+      color: var(--secondary);
+    }
+
+    /* PROJECT ACCORDION */
+    details {
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #f1f5f9;
+      transition: all 0.3s ease;
+    }
+
+    summary {
+      padding: 0.9rem 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    details[open] {
+      background: #e0f2fe;
+    }
+
+    details p {
+      padding: 0 1rem 1rem;
+      font-size: 0.95rem;
+    }
+
+    /* SKILLS */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-badge {
+      background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+      color: #1e40af;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .skill-badge:hover {
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      color: white;
+      transform: scale(1.05);
+    }
+
     footer {
       text-align: center;
-      padding: 1.5rem;
+      padding: 2rem;
       color: #6b7280;
       font-size: 0.9rem;
     }
+    .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-card {
+  background: linear-gradient(135deg, #f0f4ff, #ffffff);
+  border-radius: 14px;
+  padding: 1.2rem 1.4rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(30, 58, 138, 0.15);
+}
+
+.skill-card h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: #1e3a8a;
+  margin-bottom: 0.7rem;
+}
+
+.skill-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-badge {
+  background: #e0e7ff;
+  color: #1e3a8a;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid #c7d2fe;
+  transition: all 0.2s ease;
+}
+
+.skill-badge:hover {
+  background: #1e3a8a;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+.timeline {
+  list-style: none;
+  padding-left: 0;
+  position: relative;
+}
+
+.timeline li {
+  margin-bottom: 1.8rem;
+  padding-left: 1.5rem;
+  border-left: 3px solid #93c5fd;
+}
+
+.timeline li strong {
+  color: #1e3a8a;
+  font-size: 1.05rem;
+}
+
+.timeline ul {
+  margin-top: 0.5rem;
+  padding-left: 1.2rem;
+}
+
+.timeline ul li {
+  border: none;
+  padding-left: 0;
+  margin-bottom: 0.4rem;
+  list-style: disc;
+}
+
   </style>
 </head>
+
 <body>
-  <header>
-    <img src="profile-placeholder.jpg" alt="Profile photo">
-    <h1>Hashem Almhimed</h1>
-    <p>Machine Learning Engineer | Bamberg, Germany</p>
-    <p>
-      <i class="fa-solid fa-envelope"></i> 
-      <a href="mailto:hashem.almhimed@gmail.com" style="color:#bfdbfe;">hashem.almhimed@gmail.com</a> |
-      <i class="fa-brands fa-linkedin"></i> 
-      <a href="https://www.linkedin.com/in/hashem-almhimed-2233a0118" style="color:#bfdbfe;">LinkedIn</a>
-    </p>
-  </header>
 
-  <section>
-    <h2><i class="fa-solid fa-user"></i> About Me</h2>
-    <p>I am a passionate Machine Learning Engineer and AI enthusiast with a Master’s degree in Computer Science and over four years of international experience in software development, data analysis, and deep learning. 
-      I specialize in integrating cutting-edge AI, Machine Learning, and Generative AI solutions—including LLMs, RAG systems, and agentic AI architectures—into real-world workflows to drive digital transformation and deliver measurable business value. 
-      Having successfully completed the BEGA Regio program in Germany, I am now open and enthusiastic about taking on new and challenging opportunities in the field of AI and Machine Learning.</p>
-  </section>
-
-  <section>
-    <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
-    <ul>
-      <li><strong>Universität Bayreuth & Hochschule Hof (Germany)</strong> — Weiterbildung in IT und digitale Industrie (BEGA REGIO), Jan 2025 – Present</li>
-      <li><strong>National Institute of Technology Karnataka (India)</strong> — M.Sc. in Computer Science and Engineering, Jul 2018 – Nov 2020</li>
-      <li><strong>University of Damascus (Syria)</strong> — B.Sc. in Information Technology Engineering, Oct 2009 – Jun 2015</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
-    <ul>
-      <li><strong>NTT Smart Connect</strong> — Software Engineer, Osaka, Japan (Oct 2022 – Aug 2023)<br>Developed and maintained iOS applications using Swift, XCode, WebRTC, AWS, and Git.</li>
-      <li><strong>Woven Alpha</strong> — GIS & Machine Learning Engineer, Tokyo, Japan (Jun 2022 – Oct 2022)<br>Developed ML-based mapping tools and automated geospatial workflows.</li>
-      <li><strong>Syriatel Mobile Telecom</strong> — Mobile Application Developer / Application Specialist, Damascus, Syria (Sep 2015 – Feb 2018)<br>Developed Android applications and APIs, managed enterprise systems and incident resolution.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2><i class="fa-solid fa-diagram-project"></i> Selected Projects</h2>
-    <details open>
-      <summary>Chatbot Agent Systems based on Local LLMs and remote APIs</summary>
-      <p> A simple, powerful chat agent that runs local language models using Ollama. No API keys needed, works offline, and keeps your data private.
-🤖 Local LLM Inference - Run models like Mistral, Llama 2, Neural Chat locally
-💬 Interactive CLI - Easy-to-use command-line chat interface
-🚀 REST API - FastAPI server for programmatic access
-📝 Conversation Memory - Keeps conversation history for context
-🔧 Configurable - Easy setup with environment variables
-🔐 Privacy-First - All processing happens locally</p>
-    </details>
-    <details>
-      <summary>Recomendtion Agent based on Gemini APIs and Chain-Of-Thoughts</summary>
-      <p>small Streamlit app that demonstrates an agentic, chain-of-thought (CoT) pattern with structured outputs and a mock "tool" for fetching movie metadata. 
-        The app uses the OpenAI-compatible client for Google Gemini (via the compatibility OpenAI-style endpoint) to show how an LLM can plan, call tools, observe results, and synthesize a final recommendation.
-🤖 Using Gemini APIs to interact with LLMs
-💬 Chat interface to interact with Agent
-📝 Conversation Memory - Keeps conversation history for context
-🔧 Configurable - Easy setup with environment variables
-🤖 Uses a strict Chain-of-Thought (CoT) process enforced by a Pydantic schema so the assistant returns structured steps (START, PLAN, TOOL, OBSERVE, OUTPUT).</p>
-    </details>
-<details>
-      <summary>RAG based chatbots to interact with the company private files</summary>
-      <p>This project is an Internal Knowledge Chatbot designed to facilitate easy access to company information and resources. It leverages advanced natural language processing techniques to provide users with accurate and relevant answers to their queries.
-🤖 Using LLamaIndex framework building applications with LLMs
-💬 UI to upload documents and store its embedding in a vector-database
-📝 Conversation Memory - Keeps conversation history for context
-🔧 Chat interface to interact with Agent
-</p>
-    </details>
-    <details>
-      <summary>Diabetic Retinopathy Detection</summary>
-      <p>Built CNN-based image classification model using EfficientNet & DenseNet to classify medical images into severity levels, improving preprocessing for higher accuracy.</p>
-    </details>
-    <details>
-      <summary>Gender Prediction for Online Shoppers</summary>
-      <p>Developed Deep Learning model to predict user gender based on browsing sessions using embedding features and behavioral data.</p>
-    </details>
-    <details>
-      <summary>Facebook Likes Classification</summary>
-      <p>Implemented SVM and Logistic Regression models to categorize user interests into domains such as sports, technology, and politics.</p>
-    </details>
-  </section>
-
-  <section>
-    <h2><i class="fa-solid fa-gears"></i> Skills</h2>
-    <div class="skills">
-      <div><strong>Programming:</strong> Python, Java (Spring Boot, Spring Cloud), C++, Swift, SQL</div>
-      <div><strong>Machine Learning & AI:</strong> Deep Learning, NLP, LLMs, RAG, TensorFlow, PyTorch</div>
-      <div><strong>Cloud & DevOps:</strong> AWS, GCP, Docker</div>
-      <div><strong>Web/Mobile:</strong> Flutter, Android, REST APIs, WebRTC</div>
-      <div><strong>Data & Tools:</strong> Git, MySQL, Hibernate, Jira, XCode</div>
+<header>
+  <div class="header-inner">
+    <div class="header-left">
+      <img src="hashem.jpg" alt="Profile photo" class="profile-img">
     </div>
-  </section>
+    <div class="header-right">
+      <h1>Hashem Almhimed</h1>
+      <p>AI/Machine Learning Engineer, GenAI Specialist | Bamberg, Germany</p>
+      <div class="social" style="margin-top:0.8rem;">
+        <a href="mailto:hashem.almhimed@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/hashemalmhimed"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+</header>
 
-  <section>
-    <h2><i class="fa-solid fa-language"></i> Languages</h2>
-    <ul>
-      <li>Arabic — Native</li>
-      <li>English — C1</li>
-      <li>German — B2</li>
-      <li>Japanese — B1</li>
-    </ul>
-  </section>
+<section>
+  <h2><i class="fa-solid fa-user"></i> About Me</h2>
+  <p>
+    Passionate Machine Learning Engineer and AI enthusiast with a Master’s degree in Computer Science and 4+ years of international experience in software development, data analysis, and deep learning. 
+    I specialize in LLMs, RAG systems, and agentic AI architectures to drive digital transformation and deliver real business value. 
+    After completing the BEGA Regio program in Germany, I am now excited to take on new challenging roles in AI and Machine Learning.
+  </p>
+</section>
 
-  <footer>
-    © 2025 Hashem Almhimed — Machine Learning Engineer Portfolio
-  </footer>
+<section>
+  <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+  <ul class="timeline">
+
+    <li>
+      <strong>University of Bayreuth & Hof University</strong> — BEGA Regio Weiterbildung (2025)
+      <ul>
+        <li>Participation in the BEGA Regio program for professional qualification and integration</li>
+        <li>Focus areas: Generative AI, Machine Learning, and Data Analysis</li>
+        <li>Topics included digitalization, digital applications, and sustainability</li>
+        <li>Completed technical German language courses for professional contexts</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>National Institute of Technology Karnataka</strong> — M.Sc. Computer Science (2018–2020)
+      <ul>
+        <li>Advanced knowledge in Machine Learning, Deep Learning, Algorithms, Cloud Computing, and Information Security</li>
+        <li><strong>Master Thesis:</strong> Automatic detection of diabetic retinopathy severity using deep learning models</li>
+        <li>Adapted state-of-the-art CNN architectures (EfficientNet, DenseNet) and proposed preprocessing methods to improve model performance</li>
+        <li><strong>Internship Project:</strong> Gender prediction of online shoppers using deep learning based on session behavior and viewed products</li>
+        <li><strong>Mini Project:</strong> Social network analysis – classification of user likes using ML algorithms (SVM, Logistic Regression) and modern text classification methods</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>University of Damascus</strong> — B.Sc. Information Technology Engineering (2009–2015)
+      <ul>
+        <li>Strong foundations in programming, databases, networking, and software engineering with practical project experience</li>
+        <li><strong>Graduation Project:</strong> High-availability web applications infrastructure</li>
+        <li>Designed and implemented a distributed and fault-tolerant architecture with clustering, redundancy, and load balancing</li>
+        <li>Technologies: MySQL Cluster, GlassFish Cluster, HAProxy (load balancing), Keepalived (virtual IP), and JMeter for benchmarking</li>
+      </ul>
+    </li>
+
+  </ul>
+</section>
+
+
+<section>
+  <h2><i class="fa-solid fa-briefcase"></i> Experience</h2>
+  <ul class="timeline">
+
+    <li>
+      <strong>NTT Smart Connect</strong> — Software Engineer (Japan, 2022–2023)
+      <ul>
+        <li>Developed and maintained an iOS application using Swift and Xcode</li>
+        <li>Integrated WebRTC features for real-time communication</li>
+        <li>Built machine learning models for audio processing and classification using TensorFlow</li>
+        <li>Utilized AWS services for backend integration and cloud connectivity</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Woven Alpha</strong> — GIS & Machine Learning Engineer (Japan, 2022)
+      <ul>
+        <li>Processed and analyzed geospatial data for automated mapping solutions</li>
+        <li>Developed Python pipelines for data preprocessing and transformation</li>
+        <li>Applied machine learning models using PyTorch and TensorFlow</li>
+        <li>Worked in agile projects using Docker, GitHub, and Jira</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Syriatel</strong> — Mobile Application Developer (2015–2018)
+      <ul>
+        <li>Developed Android applications following modern UX/UI guidelines</li>
+        <li>Implemented REST APIs and database integrations</li>
+        <li>Collaborated closely with backend and product teams</li>
+        <li>Analyzed and resolved incidents in enterprise applications</li>
+        <li>Enhanced internal applications and backend APIs</li>
+        <li>Worked with Java, Oracle, and MySQL databases</li>
+      </ul>
+    </li>
+
+  </ul>
+</section>
+
+
+<section>
+  <h2><i class="fa-solid fa-diagram-project"></i> Selected Projects</h2>
+
+  <details open>
+    <summary><strong>Local LLM Chat Agent System</strong></summary>
+    <p><em>Privacy-first conversational AI running fully locally with Ollama</em></p>
+    <p>
+      A simple yet powerful chat agent that runs local language models such as Mistral and Llama using Ollama. 
+      It works offline without API keys and keeps all data private.
+      <br><br>
+      • Local LLM inference with models like Mistral and Llama<br>
+      • Interactive CLI-based chat interface<br>
+      • FastAPI REST server for programmatic access<br>
+      • Conversation memory for contextual responses<br>
+      • Easily configurable via environment variables<br>
+      • Privacy-first architecture with fully local processing<br><br>
+      🔗 <a href="https://github.com/hashem039/Ollama-simple-chat-agent" target="_blank">View on GitHub</a>
+    </p>
+  </details>
+
+  <details>
+    <summary><strong>Movie Recommendation Agent using Gemini API</strong></summary>
+    <p><em>Agentic LLM workflow with Chain-of-Thought reasoning and Streamlit UI</em></p>
+    <p>
+      A Streamlit-based recommendation agent that demonstrates structured Chain-of-Thought (CoT) reasoning 
+      with tool usage and planning steps. It uses Google Gemini APIs via an OpenAI-compatible interface.
+      <br><br>
+      • Agentic reasoning workflow (Plan → Tool → Observe → Output)<br>
+      • Interactive chat interface built with Streamlit<br>
+      • Structured outputs enforced via Pydantic schemas<br>
+      • Conversation memory for contextual interactions<br>
+      • Modular and configurable environment setup<br><br>
+      🔗 <a href="https://github.com/hashem039/google_gemini_api_simple_movie_recomendation_agent_using_streamlit" target="_blank">View on GitHub</a>
+    </p>
+  </details>
+
+  <details>
+    <summary><strong>RAG-Based Internal Knowledge Chatbot</strong></summary>
+    <p><em>Retrieval-Augmented Generation system for querying private company documents</em></p>
+    <p>
+      An internal knowledge chatbot that enables natural-language interaction with private company documents. 
+      It leverages LlamaIndex and vector embeddings to retrieve relevant information accurately.
+      <br><br>
+      • Built with LlamaIndex for RAG-based applications<br>
+      • Document upload and embedding into a vector database<br>
+      • Conversational interface with context-aware responses<br>
+      • Suitable for enterprise knowledge management use cases<br><br>
+      🔗 <a href="https://github.com/hashem039/custom-chatbot-based-internal-documents-LlamaIndex-llms" target="_blank">View on GitHub</a>
+    </p>
+  </details>
+
+  <details>
+    <summary><strong>Diabetic Retinopathy Severity Detection</strong></summary>
+    <p><em>Deep learning-based medical image classification using CNN architectures</em></p>
+    <p>
+      Developed a deep learning model to classify retinal images into multiple severity levels of diabetic retinopathy. 
+      The system improves diagnostic accuracy through advanced preprocessing and CNN architectures.
+      <br><br>
+      • Implemented EfficientNet and DenseNet architectures<br>
+      • Image preprocessing and augmentation pipeline<br>
+      • Multi-class severity classification of medical images<br>
+      • Focused on improving accuracy and robustness<br><br>
+      🔗 <a href="https://github.com/hashem039/AutomaticDRSeverityDetectionUsingDL_MainProject" target="_blank">View on GitHub</a>
+    </p>
+  </details>
+
+  <details>
+    <summary><strong>Gender Prediction from Online Shopping Behavior</strong></summary>
+    <p><em>Deep learning model using behavioral embeddings and session data</em></p>
+    <p>
+      Built a deep learning system to predict user gender based on browsing sessions and behavioral patterns. 
+      The model utilizes embedding features and sequential interaction data.
+      <br><br>
+      • Behavioral data preprocessing and feature engineering<br>
+      • Embedding-based representation of user sessions<br>
+      • Deep learning model for gender classification<br>
+      • Applied to real-world e-commerce behavior analysis<br><br>
+      🔗 <a href="https://github.com/hashem039/GenderPredictions" target="_blank">View on GitHub</a>
+    </p>
+  </details>
+
+  <details>
+    <summary><strong>Social Network User Likes Classification</strong></summary>
+    <p><em>Machine learning algorithms for categorizing user interests from social media data</em></p>
+    <p>
+      Implemented classical machine learning algorithms to classify user interests based on Facebook likes. 
+      The project focused on mapping user preferences into meaningful interest categories.
+      <br><br>
+      • Implemented SVM and Logistic Regression models<br>
+      • Feature extraction from social network interaction data<br>
+      • Multi-class classification of user interest domains<br>
+      • Use cases in marketing and recommendation systems<br><br>
+      🔗 <a href="https://github.com/hashem039/Machine-learning-algorithms-for-social-network-analysis-Categorization-of-user-likes" target="_blank">View on GitHub</a>
+    </p>
+  </details>
+
+</section>
+
+
+<section>
+  <h2><i class="fa-solid fa-gears"></i> Skills</h2>
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <h3><i class="fa-solid fa-code"></i> Programming</h3>
+      <div class="skill-badges">
+        <span class="skill-badge">Python</span>
+        <span class="skill-badge">SQL</span>
+        <span class="skill-badge">Java</span>
+        <span class="skill-badge">C++</span>
+        <span class="skill-badge">Bash</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fa-solid fa-brain"></i> Machine Learning & AI</h3>
+      <div class="skill-badges">
+        <span class="skill-badge">PyTorch</span>
+        <span class="skill-badge">TensorFlow</span>
+        <span class="skill-badge">Scikit-learn</span>
+        <span class="skill-badge">Transformers</span>
+        <span class="skill-badge">Hugging Face</span>
+        <span class="skill-badge">RAG</span>
+        <span class="skill-badge">Prompt Engineering</span>
+        <span class="skill-badge">CrewAI</span>
+        <span class="skill-badge">LangGraph</span>
+        <span class="skill-badge">OpenAI APIs</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fa-solid fa-robot"></i> GenAI & Automation</h3>
+      <div class="skill-badges">
+        <span class="skill-badge">LangChain</span>
+        <span class="skill-badge">LlamaIndex</span>
+        <span class="skill-badge">FastAPI</span>
+        <span class="skill-badge">REST APIs</span>
+        <span class="skill-badge">Google ADK</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fa-solid fa-gears"></i> MLOps & Tools</h3>
+      <div class="skill-badges">
+        <span class="skill-badge">MLflow (Basics)</span>
+        <span class="skill-badge">Docker</span>
+        <span class="skill-badge">Git</span>
+        <span class="skill-badge">CI/CD</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fa-solid fa-cloud"></i> Cloud & Data</h3>
+      <div class="skill-badges">
+        <span class="skill-badge">AWS (S3, EC2 – Basics)</span>
+        <span class="skill-badge">GCP (BigQuery – Basics)</span>
+        <span class="skill-badge">PostgreSQL</span>
+        <span class="skill-badge">MySQL</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fa-solid fa-chart-line"></i> Data & Analytics</h3>
+      <div class="skill-badges">
+        <span class="skill-badge">Snowflake</span>
+        <span class="skill-badge">Airflow</span>
+        <span class="skill-badge">Tableau</span>
+        <span class="skill-badge">Power BI</span>
+        <span class="skill-badge">Power Apps</span>
+        <span class="skill-badge">Data Analysis</span>
+        <span class="skill-badge">Databases</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2><i class="fa-solid fa-language"></i> Languages</h2>
+  <ul>
+    <li>Arabic — Native</li>
+    <li>English — C1</li>
+    <li>German — B2</li>
+    <li>Japanese — B1</li>
+  </ul>
+</section>
+
+<footer>
+  © 2026 Hashem Almhimed — AI/Machine Learning Engineer Portfolio
+</footer>
+
 </body>
 </html>
