@@ -354,6 +354,89 @@
   border: 1px solid #c7d2fe;
 }
 
+.projects-section {
+  margin-top: 50px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+/* Color update: make project cards match certificate colors (layout unchanged) */
+.project-card {
+  background: linear-gradient(135deg, #f0f4ff, #ffffff);
+  color: var(--text);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* softened decorative border gradient to match certificate palette */
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(120deg, #e0e7ff, #ffffff);
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+.project-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 28px rgba(30,58,138,0.15);
+}
+
+.project-card h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+.project-tag {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.project-card ul {
+  padding-left: 18px;
+  margin-bottom: 18px;
+}
+
+.project-card ul li {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.project-btn {
+  display: inline-block;
+  background: #38bdf8;
+  color: #0f172a;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.project-btn:hover {
+  background: #0ea5e9;
+  transform: scale(1.05);
+}
+
   </style>
 </head>
 
@@ -575,102 +658,99 @@
 </section>
 
 
-<section>
+<section class="projects-section">
   <h2><i class="fa-solid fa-diagram-project"></i> Selected Projects</h2>
 
-  <details open>
-    <summary><strong>Local LLM Chat Agent System</strong></summary>
-    <p><em>Privacy-first conversational AI running fully locally with Ollama</em></p>
-    <p>
-      A simple yet powerful chat agent that runs local language models such as Mistral and Llama using Ollama. 
-      It works offline without API keys and keeps all data private.
-      <br><br>
-      • Local LLM inference with models like Mistral and Llama<br>
-      • Interactive CLI-based chat interface<br>
-      • FastAPI REST server for programmatic access<br>
-      • Conversation memory for contextual responses<br>
-      • Easily configurable via environment variables<br>
-      • Privacy-first architecture with fully local processing<br><br>
-      🔗 <a href="https://github.com/hashem039/Ollama-simple-chat-agent" target="_blank">View on GitHub</a>
-    </p>
-  </details>
+  <div class="projects-grid">
 
-  <details>
-    <summary><strong>Movie Recommendation Agent using Gemini API</strong></summary>
-    <p><em>Agentic LLM workflow with Chain-of-Thought reasoning and Streamlit UI</em></p>
-    <p>
-      A Streamlit-based recommendation agent that demonstrates structured Chain-of-Thought (CoT) reasoning 
-      with tool usage and planning steps. It uses Google Gemini APIs via an OpenAI-compatible interface.
-      <br><br>
-      • Agentic reasoning workflow (Plan → Tool → Observe → Output)<br>
-      • Interactive chat interface built with Streamlit<br>
-      • Structured outputs enforced via Pydantic schemas<br>
-      • Conversation memory for contextual interactions<br>
-      • Modular and configurable environment setup<br><br>
-      🔗 <a href="https://github.com/hashem039/google_gemini_api_simple_movie_recomendation_agent_using_streamlit" target="_blank">View on GitHub</a>
-    </p>
-  </details>
+    <!-- Project Card -->
+    <div class="project-card">
+      <h3>Local LLM Chat Agent System</h3>
+      <p class="project-tag">Privacy-first conversational AI running fully locally with Ollama</p>
+      <ul>
+        <li>Local LLM inference (Mistral, Llama via Ollama)</li>
+        <li>Interactive CLI chat interface</li>
+        <li>FastAPI REST server</li>
+        <li>Conversation memory for contextual responses</li>
+        <li>Fully offline & privacy-first architecture</li>
+      </ul>
+      <a href="https://github.com/hashem039/Ollama-simple-chat-agent" target="_blank" class="project-btn">
+        <i class="fa-brands fa-github"></i> View on GitHub
+      </a>
+    </div>
 
-  <details>
-    <summary><strong>RAG-Based Internal Knowledge Chatbot</strong></summary>
-    <p><em>Retrieval-Augmented Generation system for querying private company documents</em></p>
-    <p>
-      An internal knowledge chatbot that enables natural-language interaction with private company documents. 
-      It leverages LlamaIndex and vector embeddings to retrieve relevant information accurately.
-      <br><br>
-      • Built with LlamaIndex for RAG-based applications<br>
-      • Document upload and embedding into a vector database<br>
-      • Conversational interface with context-aware responses<br>
-      • Suitable for enterprise knowledge management use cases<br><br>
-      🔗 <a href="https://github.com/hashem039/custom-chatbot-based-internal-documents-LlamaIndex-llms" target="_blank">View on GitHub</a>
-    </p>
-  </details>
+    <div class="project-card">
+      <h3>Movie Recommendation Agent (Gemini API)</h3>
+      <p class="project-tag">Agentic LLM workflow with Chain-of-Thought reasoning and Streamlit UI</p>
+      <ul>
+        <li>Plan → Tool → Observe → Output reasoning workflow</li>
+        <li>Interactive Streamlit chat interface</li>
+        <li>Pydantic structured outputs</li>
+        <li>Conversation memory for context awareness</li>
+        <li>Modular and configurable environment setup</li>
+      </ul>
+      <a href="https://github.com/hashem039/google_gemini_api_simple_movie_recomendation_agent_using_streamlit" target="_blank" class="project-btn">
+        <i class="fa-brands fa-github"></i> View on GitHub
+      </a>
+    </div>
 
-  <details>
-    <summary><strong>Diabetic Retinopathy Severity Detection</strong></summary>
-    <p><em>Deep learning-based medical image classification using CNN architectures</em></p>
-    <p>
-      Developed a deep learning model to classify retinal images into multiple severity levels of diabetic retinopathy. 
-      The system improves diagnostic accuracy through advanced preprocessing and CNN architectures.
-      <br><br>
-      • Implemented EfficientNet and DenseNet architectures<br>
-      • Image preprocessing and augmentation pipeline<br>
-      • Multi-class severity classification of medical images<br>
-      • Focused on improving accuracy and robustness<br><br>
-      🔗 <a href="https://github.com/hashem039/AutomaticDRSeverityDetectionUsingDL_MainProject" target="_blank">View on GitHub</a>
-    </p>
-  </details>
+    <div class="project-card">
+      <h3>RAG-Based Internal Knowledge Chatbot</h3>
+      <p class="project-tag">Retrieval-Augmented Generation system for private company documents</p>
+      <ul>
+        <li>Built with LlamaIndex for RAG pipelines</li>
+        <li>Document ingestion & vector embeddings</li>
+        <li>Context-aware conversational retrieval</li>
+        <li>Enterprise knowledge management use cases</li>
+      </ul>
+      <a href="https://github.com/hashem039/custom-chatbot-based-internal-documents-LlamaIndex-llms" target="_blank" class="project-btn">
+        <i class="fa-brands fa-github"></i> View on GitHub
+      </a>
+    </div>
 
-  <details>
-    <summary><strong>Gender Prediction from Online Shopping Behavior</strong></summary>
-    <p><em>Deep learning model using behavioral embeddings and session data</em></p>
-    <p>
-      Built a deep learning system to predict user gender based on browsing sessions and behavioral patterns. 
-      The model utilizes embedding features and sequential interaction data.
-      <br><br>
-      • Behavioral data preprocessing and feature engineering<br>
-      • Embedding-based representation of user sessions<br>
-      • Deep learning model for gender classification<br>
-      • Applied to real-world e-commerce behavior analysis<br><br>
-      🔗 <a href="https://github.com/hashem039/GenderPredictions" target="_blank">View on GitHub</a>
-    </p>
-  </details>
+    <div class="project-card">
+      <h3>Diabetic Retinopathy Severity Detection</h3>
+      <p class="project-tag">Deep learning-based medical image classification with CNN architectures</p>
+      <ul>
+        <li>EfficientNet & DenseNet architectures</li>
+        <li>Advanced preprocessing & augmentation</li>
+        <li>Multi-class severity classification</li>
+        <li>Improved diagnostic accuracy & robustness</li>
+      </ul>
+      <a href="https://github.com/hashem039/AutomaticDRSeverityDetectionUsingDL_MainProject" target="_blank" class="project-btn">
+        <i class="fa-brands fa-github"></i> View on GitHub
+      </a>
+    </div>
 
-  <details>
-    <summary><strong>Social Network User Likes Classification</strong></summary>
-    <p><em>Machine learning algorithms for categorizing user interests from social media data</em></p>
-    <p>
-      Implemented classical machine learning algorithms to classify user interests based on Facebook likes. 
-      The project focused on mapping user preferences into meaningful interest categories.
-      <br><br>
-      • Implemented SVM and Logistic Regression models<br>
-      • Feature extraction from social network interaction data<br>
-      • Multi-class classification of user interest domains<br>
-      • Use cases in marketing and recommendation systems<br><br>
-      🔗 <a href="https://github.com/hashem039/Machine-learning-algorithms-for-social-network-analysis-Categorization-of-user-likes" target="_blank">View on GitHub</a>
-    </p>
-  </details>
+    <div class="project-card">
+      <h3>Gender Prediction from Online Shopping Behavior</h3>
+      <p class="project-tag">Deep learning model using behavioral embeddings and session data</p>
+      <ul>
+        <li>Behavioral feature engineering & preprocessing</li>
+        <li>Embedding-based session representation</li>
+        <li>Deep learning classification model</li>
+        <li>Applied to real-world e-commerce analytics</li>
+      </ul>
+      <a href="https://github.com/hashem039/GenderPredictions" target="_blank" class="project-btn">
+        <i class="fa-brands fa-github"></i> View on GitHub
+      </a>
+    </div>
 
+    <div class="project-card">
+      <h3>Social Network User Likes Classification</h3>
+      <p class="project-tag">Machine learning models for categorizing social media user interests</p>
+      <ul>
+        <li>SVM & Logistic Regression implementation</li>
+        <li>Feature extraction from interaction data</li>
+        <li>Multi-class interest classification</li>
+        <li>Applications in marketing & recommender systems</li>
+      </ul>
+      <a href="https://github.com/hashem039/Machine-learning-algorithms-for-social-network-analysis-Categorization-of-user-likes" target="_blank" class="project-btn">
+        <i class="fa-brands fa-github"></i> View on GitHub
+      </a>
+    </div>
+
+  </div>
 </section>
 
 
