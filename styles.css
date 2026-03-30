@@ -100,16 +100,36 @@ header p {
   position: relative;
 }
 
-.social a {
+.social a, .social-link {
   color: #bfdbfe;
   margin: 0 10px;
-  font-size: 1.2rem;
-  transition: 0.3s;
+  font-size: 1rem;
+  transition: 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
 }
 
-.social a:hover {
+.social-link i {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.social a:hover, .social-link:hover {
   color: white;
   transform: translateY(-2px);
+}
+
+.social-text {
+  color: #bfdbfe;
+  font-size: 0.95rem;
+}
+
+.social-link:focus {
+  outline: 3px solid rgba(56,189,248,0.9);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 /* Responsive: stack on small screens */
@@ -407,6 +427,8 @@ footer {
     linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
+  /* allow clicks to pass through the decorative overlay */
+  pointer-events: none;
 }
 
 .project-card:hover {
