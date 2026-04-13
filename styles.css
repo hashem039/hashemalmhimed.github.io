@@ -431,6 +431,23 @@ footer {
   pointer-events: none;
 }
 
+/* Featured project spans full width */
+.project-card.featured {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 900px) {
+  .project-card.featured {
+    padding: 30px;
+  }
+}
+
+.project-card.featured h3 {
+  font-size: 1.5rem;
+}
+
 .project-card:hover {
   transform: translateY(-6px) scale(1.01);
   box-shadow: 0 12px 28px rgba(30, 58, 138, 0.15);
