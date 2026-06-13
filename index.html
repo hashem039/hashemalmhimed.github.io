@@ -396,6 +396,64 @@
       </div>
 
       <div class="project-card featured">
+        <h3>PySQL-Flow: Modular ELT Pipeline</h3>
+        <p class="project-tag">A native Python and SQL modular ELT framework engineered to unify
+          heterogeneous data sources (CSV, JSON, REST APIs) into a centralized SQLite data warehouse. Built
+          with a focus on maintainability, it employs decoupled logic to ensure high data integrity and
+          idempotent execution.</p>
+        <ul>
+          <li><strong>Modular Architecture:</strong> Decoupled extraction and transformation layers,
+            allowing for independent scaling and maintenance of data connectors and business logic.</li>
+          <li><strong>Multi-Source Ingestion:</strong> Unified disparate data streams, including structured
+            CSVs, semi-structured JSON logs, and REST API payloads using native Python libraries (Pandas,
+            Requests).</li>
+          <li><strong>Idempotent ELT Pattern:</strong> Implemented a strict Extract-Load-Transform workflow
+            that resets the environment on each run to ensure consistent results and full data lineage.</li>
+          <li><strong>Native SQL Transformations:</strong> Engineered robust SQL scripts for whitespace
+            normalization and data staging, leveraging the power of the database for heavy lifting.</li>
+          <li><strong>Resilient Error Handling:</strong> Built-in validation for file paths, API responses,
+            and SQL execution to ensure the pipeline fails gracefully and provides actionable logs.</li>
+        </ul>
+        <a href="https://github.com/hashem039/pysql-flow-elt" target="_blank" class="project-btn"
+          aria-label="View PySQL-Flow project on GitHub">
+          <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub
+        </a>
+      </div>
+
+      <div class="project-card featured">
+        <h3>OmniStream: Spec-Driven ELT Pipeline</h3>
+        <p class="project-tag">A production-grade ELT framework engineered via Spec-Driven Development to unify
+          heterogeneous
+          data sources (CSV, JSON, APIs). Developed with the Gemini CLI, it ensures high data integrity and idempotency
+          through
+          automated cleansing and a resilient, architecture-first design.</p>
+        <ul>
+          <li><strong>Spec-Driven Development (SDD):</strong> Championed a "Specs-over-Code" workflow to eliminate
+            architectural
+            drift and ensure 100% alignment with business requirements.</li>
+          <li><strong>Agentic Orchestration:</strong> Leveraged the Gemini CLI for autonomous extraction logic
+            generation
+            and
+            modular connection management.</li>
+          <li><strong>Heterogeneous Ingestion:</strong> Unified disparate data streams, including structured CSVs,
+            semi-structured
+            JSON logs, and REST API payloads.</li>
+          <li><strong>Standardized ELT:</strong> Implemented a strict Extract-Load-Transform pattern to maintain full
+            data
+            lineage
+            and traceability.</li>
+          <li><strong>Resilient Cleansing:</strong> Engineered CTE-driven SQL routines for whitespace normalization,
+            case
+            standardization, and robust null-value handling.</li>
+        </ul>
+        <a href="https://github.com/hashem039/spec-driven-dev-data-pipeline" target="_blank" class="project-btn"
+          aria-label="View OmniStream project on GitHub">
+          <i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub
+        </a>
+      </div>
+
+
+      <div class="project-card featured">
         <h3>AgentClinic: Spec-Driven-Dev for agentic coding</h3>
         <p class="project-tag">A full-stack wellness platform for AI agents developed to showcase the power of
           Spec-Driven
